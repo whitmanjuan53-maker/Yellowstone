@@ -45,7 +45,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename="/Yellowstone">
         <ScrollToTop />
         {/* Entrance Portal - shown only on first visit */}
         {!hasEntered && <EntrancePortal onEnter={handleEnter} />}
