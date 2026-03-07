@@ -41,8 +41,37 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Add 404.html for SPA routing
-        run: cp ./dist/index.html ./dist/404.html
+      - name: Create 404.html for SPA routing
+        run: |
+          cat > ./dist/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Yellowstone Asset Management</title>
+              <script type="text/javascript">
+                // Single Page Apps for GitHub Pages
+                // MIT License
+                // https://github.com/rafgraph/spa-github-pages
+                var pathSegmentsToKeep = 1;
+                var l = window.location;
+                l.replace(
+                  l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                  l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+                  l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+                  (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+                  l.hash
+                );
+              </script>
+            </head>
+            <body>
+            </body>
+          </html>
+          EOF
+
+      - name: Inject SPA redirect script into index.html
+        run: |
+          sed -i 's|<head>|<head>\n    <script type="text/javascript">\n      // Single Page Apps for GitHub Pages\n      (function(l) {\n        if (l.search[1] === "/" ) {\n          var decoded = l.search.slice(1).split("&").map(function(s) {\n            return s.replace(/~and~/g, "&")\n          }).join("?");\n          window.history.replaceState(null, null,\n              l.pathname.slice(0, -1) + decoded + l.hash\n          );\n        }\n      }(window.location))\n    </script>|' ./dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
