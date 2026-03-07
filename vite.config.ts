@@ -5,7 +5,7 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/Yellowstone/' : './',
+  base: process.env.VERCEL ? '/' : (mode === 'production' ? '/Yellowstone/' : './'),
   server: {
     port: 3000,
     open: true,
