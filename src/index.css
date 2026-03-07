@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Yellowstone Brand Colors - STRICT */
+    --primary-blue: #2B395F;
+    --secondary-blue: #3A4A70;
+    --muted-blue: #4E5F84;
+    --gold: #CFA54A;
+    --gold-light: #E8C26A;
+    --gold-dark: #A8842E;
+    --background: #F3F3F3;
+    
+    /* Shadcn/ui Theme Mapping */
+    --background-hsl: 0 0% 95%;
+    --foreground: 222 30% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 30% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 30% 25%;
+    --primary: 222 35% 27%;
+    --primary-foreground: 0 0% 95%;
+    --secondary: 220 30% 33%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 25% 41%;
+    --muted-foreground: 0 0% 100%;
+    --accent: 42 60% 55%;
+    --accent-foreground: 222 35% 20%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 42 60% 55%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--background);
+    color: var(--primary-blue);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply font-semibold tracking-tight;
+    color: var(--primary-blue);
+  }
+}
+
+@layer components {
+  /* Premium Spacing System */
+  .section-padding {
+    @apply px-6 sm:px-8 lg:px-12 xl:px-16;
+  }
+  
+  /* Executive Divider */
+  .executive-divider {
+    @apply flex items-center justify-center gap-4 py-12;
+  }
+  .executive-divider::before,
+  .executive-divider::after {
+    content: '';
+    @apply h-px bg-gold/60 flex-1 max-w-[200px];
+  }
+  .executive-divider-diamond {
+    @apply w-2 h-2 bg-gold rotate-45;
+  }
+  
+  /* Premium Card Treatment */
+  .card-premium {
+    @apply bg-white transition-all duration-300;
+    box-shadow: 0 1px 3px rgba(43, 57, 95, 0.06);
+  }
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(43, 57, 95, 0.12);
+  }
+  
+  /* Premium Button */
+  .btn-premium {
+    @apply transition-all duration-300 ease-out;
+  }
+  .btn-premium:hover {
+    transform: scale(1.03);
+  }
+  .btn-premium:active {
+    transform: scale(0.98);
+  }
+  
+  /* Gold accent line */
+  .gold-accent-line {
+    @apply h-px bg-gold w-24;
+  }
+  
+  /* Premium Navigation Link */
+  .nav-link-premium {
+    @apply relative transition-colors duration-300;
+  }
+  .nav-link-premium::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300;
+  }
+  .nav-link-premium:hover::after {
+    @apply w-full;
+  }
+  
+  /* Section breathing room */
+  .section-breathe {
+    @apply py-20 lg:py-28;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Animations */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+}
+
+/* Scrollbar styling - Premium */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--muted-blue);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-blue);
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(207, 165, 74, 0.25);
+  color: var(--primary-blue);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Mobile Safe Area Support */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 640px) {
+  button, 
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Smooth scrolling with offset for fixed header */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Better image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
