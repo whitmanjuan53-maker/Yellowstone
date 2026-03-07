@@ -4,8 +4,8 @@ import { defineConfig } from "vite"
 import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: './',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/Yellowstone/' : './',
   server: {
     port: 3000,
     open: true,
@@ -27,4 +27,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
