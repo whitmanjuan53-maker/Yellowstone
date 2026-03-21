@@ -109,7 +109,7 @@ export function FloorPlansPage() {
             {filteredFloorPlans.map((floorPlan, index) => (
               <motion.div 
                 key={floorPlan.id}
-                className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                className="bg-white dark:bg-slate-800 rounded-sm border border-black/5 ring-1 ring-inset ring-black/5 shadow-card hover:shadow-card-hover transition-all duration-500 ease-out hover:-translate-y-1"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}

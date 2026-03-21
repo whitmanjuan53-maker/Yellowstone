@@ -40,7 +40,7 @@ export function Navigation() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="max-w-7xl mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 sm:gap-4">
@@ -50,22 +50,22 @@ export function Navigation() {
                 className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain drop-shadow-lg"
               />
               <div className="flex flex-col leading-none">
-                <span className="font-display font-bold text-white text-xl sm:text-2xl lg:text-3xl tracking-tight leading-none drop-shadow-md">
+                <span className="font-display font-bold text-white text-xl sm:text-2xl lg:text-3xl tracking-tighter leading-none drop-shadow-md">
                   YELLOWSTONE
                 </span>
-                <span className="text-white text-[0.65rem] sm:text-xs lg:text-sm tracking-[0.25em] uppercase font-bold mt-1 drop-shadow-md" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                <span className="text-white text-[0.65rem] sm:text-xs tracking-widest uppercase font-bold mt-1 drop-shadow-md">
                   Asset Management
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   to={link.path}
-                  className={`relative text-sm font-medium tracking-wide pb-1 transition-colors nav-link-premium ${
+                  className={`relative text-xs uppercase font-bold tracking-widest pb-1 transition-colors nav-link-premium ${
                     isActive(link.path)
                       ? 'text-gold'
                       : 'text-white/80 hover:text-white'
@@ -84,7 +84,7 @@ export function Navigation() {
               <Link to="/contact">
                 <Button
                   size="sm"
-                  className="bg-gold text-primary-blue hover:bg-gold-light font-semibold px-6 h-10 text-sm transition-all duration-300"
+                  className="bg-gold text-primary-blue hover:bg-gold-light transition-all duration-500 ease-out"
                 >
                   Apply
                 </Button>
@@ -135,7 +135,7 @@ export function Navigation() {
                     <span className="font-display font-bold text-white text-2xl tracking-tight block">
                       YELLOWSTONE
                     </span>
-                    <span className="text-white text-xs tracking-[0.25em] uppercase font-bold" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                    <span className="text-white text-xs tracking-[0.25em] uppercase font-bold drop-shadow-md">
                       Asset Management
                     </span>
                   </div>

@@ -142,13 +142,13 @@ function FloorPlanCard({
         <div className="flex gap-2 mt-auto pt-3 border-t border-gray-100">
           <button
             onClick={() => onViewDetails(plan)}
-            className="flex-1 text-xs font-semibold border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-all duration-200 px-3 py-2"
+            className="flex-1 text-xs font-semibold border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-all duration-500 ease-out px-3 py-2"
           >
             View Details
           </button>
           <button
             onClick={() => onTourThis(plan)}
-            className="flex-1 text-xs font-semibold text-primary-blue hover:text-white transition-all duration-200 px-3 py-2"
+            className="flex-1 text-xs font-semibold text-primary-blue hover:text-white transition-all duration-500 ease-out px-3 py-2"
             style={{ background: 'var(--gold)' }}
           >
             Tour This Layout
@@ -355,6 +355,7 @@ export function TourPage() {
     setRecentlyViewed(getRecentlyViewed());
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleTourThis = (_plan: FloorPlan) => {
     setDetailPlan(null);
     setTimeout(() => schedulerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
@@ -439,7 +440,7 @@ export function TourPage() {
             transition={{ delay: 0.45 }}
           >
             <a href="#communities">
-              <Button size="lg" className="font-semibold px-8 group transition-all duration-300"
+              <Button size="lg" className="font-semibold px-8 group transition-all duration-500 ease-out"
                 style={{ height: '52px', background: 'var(--gold)', color: 'var(--primary-blue)', fontSize: '1rem' }}>
                 Select a Community
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
@@ -494,7 +495,7 @@ export function TourPage() {
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ y: -4 }}
                 onClick={() => { setSelectedProperty(property); setBedFilter(null); setCompareList([]); }}
-                className="bg-white cursor-pointer overflow-hidden group transition-all duration-300 relative"
+                className="bg-white cursor-pointer overflow-hidden group transition-all duration-500 ease-out relative"
                 style={{
                   boxShadow: isSelected
                     ? '0 0 0 2px var(--gold), 0 8px 24px rgba(43,57,95,0.14)'
@@ -533,7 +534,7 @@ export function TourPage() {
                         : 'Waitlist'}
                     </span>
                   </div>
-                  <button className="w-full mt-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300"
+                  <button className="w-full mt-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-500 ease-out"
                     style={isSelected
                       ? { background: 'var(--gold)', color: 'var(--primary-blue)' }
                       : { background: 'var(--primary-blue)', color: 'white' }}>
@@ -580,7 +581,7 @@ export function TourPage() {
                   <span className="text-xs font-semibold text-muted-blue uppercase tracking-wide mr-1">Beds:</span>
                   <button
                     onClick={() => setBedFilter(null)}
-                    className={`px-3 py-1.5 text-xs font-semibold uppercase transition-all duration-200 ${
+                    className={`px-3 py-1.5 text-xs font-semibold uppercase transition-all duration-500 ease-out ${
                       bedFilter === null
                         ? 'text-primary-blue'
                         : 'bg-white text-muted-blue hover:text-primary-blue border border-gray-200'
@@ -593,7 +594,7 @@ export function TourPage() {
                     <button
                       key={n}
                       onClick={() => setBedFilter(bedFilter === n ? null : n)}
-                      className={`px-3 py-1.5 text-xs font-semibold uppercase transition-all duration-200 ${
+                      className={`px-3 py-1.5 text-xs font-semibold uppercase transition-all duration-500 ease-out ${
                         bedFilter === n
                           ? ''
                           : 'bg-white text-muted-blue hover:text-primary-blue border border-gray-200'
@@ -607,7 +608,7 @@ export function TourPage() {
                 <div className="ml-auto">
                   <button
                     onClick={() => setAvailableOnly(!availableOnly)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase border transition-all duration-200 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase border transition-all duration-500 ease-out ${
                       availableOnly ? 'border-emerald-500 text-emerald-700 bg-emerald-50' : 'border-gray-200 bg-white text-muted-blue'
                     }`}
                   >
@@ -726,7 +727,7 @@ export function TourPage() {
                             key={t.id}
                             type="button"
                             onClick={() => setTourType(t.id as TourType)}
-                            className="flex flex-col items-center gap-2 p-4 border-2 text-center transition-all duration-200"
+                            className="flex flex-col items-center gap-2 p-4 border-2 text-center transition-all duration-500 ease-out"
                             style={active
                               ? { borderColor: 'var(--gold)', background: 'rgba(207,165,74,0.06)' }
                               : { borderColor: '#e5e7eb' }}
@@ -813,7 +814,7 @@ export function TourPage() {
                     type="submit"
                     disabled={isSubmitting}
                     size="lg"
-                    className="w-full font-semibold group transition-all duration-300"
+                    className="w-full font-semibold group transition-all duration-500 ease-out"
                     style={{ height: '52px', background: 'var(--gold)', color: 'var(--primary-blue)', fontSize: '1rem' }}
                   >
                     {isSubmitting ? (

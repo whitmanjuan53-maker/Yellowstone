@@ -159,7 +159,7 @@ export function PropertiesPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.02 }}
                         onClick={() => toggleAmenity(amenity)}
-                        className={`px-3 py-1.5 text-sm transition-all duration-300 ${
+                        className={`px-3 py-1.5 text-sm transition-all duration-500 ease-out ${
                           selectedAmenities.includes(amenity)
                             ? 'bg-gold text-primary-blue font-medium'
                             : 'bg-off-white text-muted-blue hover:bg-gold/20'

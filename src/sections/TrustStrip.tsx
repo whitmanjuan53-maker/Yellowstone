@@ -13,13 +13,11 @@ export function TrustStrip() {
             <div key={item} className="flex items-center gap-4">
               {index > 0 && (
                 <span
-                  className="hidden sm:block w-px h-4"
-                  style={{ background: 'var(--gold)', opacity: 0.7 }}
+                  className="hidden sm:block w-px h-4 bg-gold opacity-70"
                 />
               )}
               <span
-                className="text-[10px] sm:text-xs font-semibold tracking-[0.12em] sm:tracking-[0.16em] uppercase text-center"
-                style={{ color: 'var(--muted-blue)' }}
+                className="text-[10px] sm:text-xs font-semibold tracking-[0.12em] sm:tracking-[0.16em] uppercase text-center text-muted-blue"
               >
                 {item}
               </span>

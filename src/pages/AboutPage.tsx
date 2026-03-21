@@ -72,8 +72,7 @@ export function AboutPage() {
             className="w-full h-full object-cover"
           />
           <div 
-            className="absolute inset-0"
-            style={{ background: 'rgba(43, 57, 95, 0.75)' }}
+            className="absolute inset-0 bg-primary-blue/75"
           />
         </div>
         
@@ -100,7 +99,7 @@ export function AboutPage() {
               <Link to="/contact">
                 <Button 
                   variant="outline" 
-                  className="h-12 px-8 border border-white/40 text-white hover:bg-white hover:text-primary-blue font-semibold bg-transparent transition-all duration-300"
+                  className="h-12 px-8 border border-white/40 text-white hover:bg-white hover:text-primary-blue font-semibold bg-transparent transition-all duration-500 ease-out"
                 >
                   Contact Our Team
                 </Button>

@@ -56,13 +56,13 @@ export function Footer() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/properties"
-              className="text-xs font-semibold tracking-wider uppercase px-4 py-2.5 border border-gold/40 text-gold hover:bg-gold hover:text-primary-blue transition-all duration-300"
+              className="text-xs font-bold tracking-widest uppercase px-6 py-4 border border-gold/40 text-gold hover:bg-gold hover:text-primary-blue transition-all duration-500 ease-out rounded-sm"
             >
               View Communities
             </Link>
             <Link
               to="/contact"
-              className="text-xs font-semibold tracking-wider uppercase px-4 py-2.5 bg-gold text-primary-blue hover:bg-gold-light transition-all duration-300"
+              className="text-xs font-bold tracking-widest uppercase px-6 py-4 bg-gold text-primary-blue hover:bg-white transition-all duration-500 ease-out shadow-gold hover:shadow-gold-glow hover:-translate-y-1 rounded-sm"
             >
               Schedule Tour
             </Link>
@@ -81,10 +81,10 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-white/55 hover:text-gold text-sm transition-colors duration-300 inline-block relative group"
+                    className="text-white/55 hover:text-gold text-sm transition-colors duration-500 ease-out inline-block relative group"
                   >
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-500 ease-out group-hover:w-full" />
                   </Link>
                 </li>
               ))}
@@ -101,10 +101,10 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-white/55 hover:text-gold text-sm transition-colors duration-300 inline-block relative group"
+                    className="text-white/55 hover:text-gold text-sm transition-colors duration-500 ease-out inline-block relative group"
                   >
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-500 ease-out group-hover:w-full" />
                   </Link>
                 </li>
               ))}
@@ -121,10 +121,10 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-white/55 hover:text-gold text-sm transition-colors duration-300 inline-block relative group"
+                    className="text-white/55 hover:text-gold text-sm transition-colors duration-500 ease-out inline-block relative group"
                   >
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-500 ease-out group-hover:w-full" />
                   </Link>
                 </li>
               ))}
@@ -147,7 +147,7 @@ export function Footer() {
                 <Phone className="w-3.5 h-3.5 text-gold/60 shrink-0" />
                 <a
                   href="tel:+17135551234"
-                  className="text-white/55 hover:text-gold text-sm transition-colors duration-300"
+                  className="text-white/55 hover:text-gold text-sm transition-colors duration-500 ease-out"
                 >
                   (713) 555-1234
                 </a>
@@ -156,7 +156,7 @@ export function Footer() {
                 <Mail className="w-3.5 h-3.5 text-gold/60 shrink-0" />
                 <a
                   href="mailto:info@yellowstone.com"
-                  className="text-white/55 hover:text-gold text-sm transition-colors duration-300"
+                  className="text-white/55 hover:text-gold text-sm transition-colors duration-500 ease-out"
                 >
                   info@yellowstone.com
                 </a>
@@ -182,23 +182,23 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-[#1e2842] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-8 lg:px-16 py-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/30">
-            <p className="tracking-wide">
-              © 2026 Yellowstone Asset Management. All Rights Reserved.
+      <div className="bg-black/20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-8 lg:px-16 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-bold tracking-widest uppercase text-white/30">
+            <p className="tracking-widest">
+              © 2026 Yellowstone
             </p>
-            <div className="flex items-center gap-3 sm:gap-5 flex-wrap justify-center">
-              <Link to="/privacy" className="hover:text-gold transition-colors duration-300">
+            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+              <Link to="/privacy" className="hover:text-gold transition-colors duration-500 ease-out">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="hover:text-gold transition-colors duration-300">
+              <Link to="/terms" className="hover:text-gold transition-colors duration-500 ease-out">
                 Terms
               </Link>
-              <Link to="/fair-housing" className="hover:text-gold transition-colors duration-300">
+              <Link to="/fair-housing" className="hover:text-gold transition-colors duration-500 ease-out">
                 Fair Housing
               </Link>
-              <Link to="/accessibility" className="hover:text-gold transition-colors duration-300">
+              <Link to="/accessibility" className="hover:text-gold transition-colors duration-500 ease-out">
                 ADA
               </Link>
             </div>

@@ -54,15 +54,15 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    @apply font-semibold tracking-tight;
+    @apply font-semibold tracking-tighter;
     color: var(--primary-blue);
   }
 }
 
 @layer components {
-  /* Premium Spacing System */
+  /* Premium Spacing System - Strict 8px Grid */
   .section-padding {
-    @apply px-6 sm:px-8 lg:px-12 xl:px-16;
+    @apply px-8 sm:px-16 lg:px-24 xl:px-32;
   }
   
   /* Executive Divider */
@@ -80,7 +80,7 @@
   
   /* Premium Card Treatment */
   .card-premium {
-    @apply bg-white transition-all duration-300;
+    @apply bg-white transition-all duration-500 ease-out;
     box-shadow: 0 1px 3px rgba(43, 57, 95, 0.06);
   }
   .card-premium:hover {
@@ -90,7 +90,7 @@
   
   /* Premium Button */
   .btn-premium {
-    @apply transition-all duration-300 ease-out;
+    @apply transition-all duration-500 ease-out;
   }
   .btn-premium:hover {
     transform: scale(1.03);
@@ -106,19 +106,19 @@
   
   /* Premium Navigation Link */
   .nav-link-premium {
-    @apply relative transition-colors duration-300;
+    @apply relative transition-colors duration-500 ease-out;
   }
   .nav-link-premium::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-500 ease-out;
   }
   .nav-link-premium:hover::after {
     @apply w-full;
   }
   
-  /* Section breathing room */
+  /* Section breathing room - Strict 8px Grid */
   .section-breathe {
-    @apply py-20 lg:py-28;
+    @apply py-24 md:py-32;
   }
 }
 
@@ -195,6 +195,7 @@
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -202,6 +203,7 @@
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

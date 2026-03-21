@@ -1,0 +1,190 @@
+
+> my-app@0.0.0 lint C:\Users\NSS\Downloads\Yellowstone
+> eslint .
+
+
+C:\Users\NSS\Downloads\Yellowstone\src\App.tsx
+  38:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\NSS\Downloads\Yellowstone\src\App.tsx:38:5
+  36 |
+  37 |   useEffect(() => {
+> 38 |     setIsLoaded(true);
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  39 |   }, []);
+  40 |
+  41 |   const handleEnter = () => {  react-hooks/set-state-in-effect
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ChatBot.tsx
+  37:11  error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ChatBot.tsx:37:11
+  35 |
+  36 |     const userMessage: Message = {
+> 37 |       id: Date.now().toString(),
+     |           ^^^^^^^^^^ Cannot call impure function
+  38 |       text: text.trim(),
+  39 |       isUser: true,
+  40 |       timestamp: new Date(),  react-hooks/purity
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\EntrancePortal.tsx
+  244:28  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\EntrancePortal.tsx:244:28
+  242 |                 className="absolute bg-gradient-to-b from-transparent via-[#CFA54A]/60 to-transparent"
+  243 |                 style={{
+> 244 |                   left: `${Math.random() * 100}%`,
+      |                            ^^^^^^^^^^^^^ Cannot call impure function
+  245 |                   width: '2px',
+  246 |                   height: '100%',
+  247 |                 }}  react-hooks/purity
+  254:26  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\EntrancePortal.tsx:254:26
+  252 |                 transition={{
+  253 |                   duration: 0.8,
+> 254 |                   delay: Math.random() * 0.5,
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  255 |                   repeat: 2
+  256 |                 }}
+  257 |               />                                                                                               react-hooks/purity
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\PropertyCard.tsx
+  3:18  error  'Bed' is defined but never used     @typescript-eslint/no-unused-vars
+  3:23  error  'Bath' is defined but never used    @typescript-eslint/no-unused-vars
+  3:29  error  'Square' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\badge.tsx
+  46:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\button-group.tsx
+  82:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\button.tsx
+  62:18  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\form.tsx
+  159:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\navigation-menu.tsx
+  167:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\sidebar.tsx
+  611:26  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\sidebar.tsx:611:26
+  609 |   // Random width between 50 to 90%.
+  610 |   const width = React.useMemo(() => {
+> 611 |     return `${Math.floor(Math.random() * 40) + 50}%`
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  612 |   }, [])
+  613 |
+  614 |   return (  react-hooks/purity
+  725:3   error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\components\ui\toggle.tsx
+  45:18  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\contexts\ThemeContext.tsx
+  50:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\MapPage.tsx
+  20:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\NowLeasingPage.tsx
+  452:6  warning  React Hook useEffect has a missing dependency: 'featuredPromos.length'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx
+   486:142  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx:486:142
+  484 |                   <p className="text-muted-blue mb-6">Thank you for your payment of ${parseFloat(amount).toLocaleString()}</p>
+  485 |                   <div className="bg-gray-50 rounded-xl p-4 w-full mb-6 text-left">
+> 486 |                     <p className="text-sm"><span className="text-muted-blue">Confirmation #:</span> <span className="font-mono font-medium">{Math.random().toString(36).substr(2, 9).toUpperCase()}</span></p>
+      |                                                                                                                                              ^^^^^^^^^^^^^ Cannot call impure function
+  487 |                     <p className="text-sm mt-1"><span className="text-muted-blue">Date:</span> <span className="font-medium">{new Date().toLocaleDateString()}</span></p>
+  488 |                   </div>
+  489 |                   <div className="flex gap-3 w-full">  react-hooks/purity
+   523:17   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx:523:17
+  521 |
+  522 |   useEffect(() => {
+> 523 |     if (isOpen) setView('list');
+      |                 ^^^^^^^ Avoid calling setState() directly within an effect
+  524 |   }, [isOpen]);
+  525 |
+  526 |   const handleSubmit = () => {                                                                                                                                                                                                                                                                                                                     react-hooks/set-state-in-effect
+  1091:62   error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx:1091:62
+  1089 |                 </div>
+  1090 |                 <span className="ml-auto px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+> 1091 |                   {Math.ceil((new Date(leaseEnd).getTime() - Date.now()) / (1000 * 60 * 60 * 24))} days left
+       |                                                              ^^^^^^^^^^ Cannot call impure function
+  1092 |                 </span>
+  1093 |               </div>
+  1094 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/purity
+  1621:17   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx:1621:17
+  1619 |
+  1620 |   useEffect(() => {
+> 1621 |     if (isOpen) setStep(isEnabled ? 'info' : 'setup');
+       |                 ^^^^^^^ Avoid calling setState() directly within an effect
+  1622 |   }, [isOpen, isEnabled]);
+  1623 |
+  1624 |   const handleEnable = () => {                                                                                                                                                                                                                                                                            react-hooks/set-state-in-effect
+  2143:7    error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\ResidentsPage.tsx:2143:7
+  2141 |     const session = localStorage.getItem('resident_session');
+  2142 |     if (session) {
+> 2143 |       setSelectedProperty(MOCK_PROPERTIES[0]);
+       |       ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  2144 |       setStep('dashboard');
+  2145 |     }
+  2146 |   }, []);                                                                                                                                                                                                                                    react-hooks/set-state-in-effect
+
+C:\Users\NSS\Downloads\Yellowstone\src\pages\TourPage.tsx
+  358:27  error  '_plan' is defined but never used  @typescript-eslint/no-unused-vars
+
+??? 24 problems (23 errors, 1 warning)
+
+???ELIFECYCLE??? Command failed with exit code 1.

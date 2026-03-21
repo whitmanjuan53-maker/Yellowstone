@@ -110,7 +110,7 @@ export function InvestorsPage() {
               <Link to="#inquiry">
                 <Button 
                   variant="outline" 
-                  className="h-12 px-8 border border-gold text-gold hover:bg-gold hover:text-primary-blue font-semibold bg-transparent transition-all duration-300"
+                  className="h-12 px-8 border border-gold text-gold hover:bg-gold hover:text-primary-blue font-semibold bg-transparent transition-all duration-500 ease-out"
                 >
                   Acquisition Inquiry
                 </Button>

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Wrench, MapPin, PawPrint, Smartphone } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
@@ -31,65 +30,51 @@ const benefits = [
 
 export function WhyRentSection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+    <section className="section-padding section-breathe bg-slate-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-8 lg:px-16">
 
         {/* Header */}
         <ScrollReveal>
-          <div className="max-w-xl mb-10 lg:mb-14">
-            <span className="text-gold text-xs tracking-[0.2em] uppercase font-semibold">
+          <div className="max-w-xl mb-12 lg:mb-16">
+            <span className="text-gold text-xs tracking-widest uppercase font-bold">
               Why Yellowstone
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-display font-bold text-primary-blue mt-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-primary-blue mt-4 tracking-tighter">
               Why Rent With Yellowstone?
             </h2>
           </div>
         </ScrollReveal>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {benefits.map((benefit, index) => (
             <ScrollReveal key={benefit.title} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="group bg-white p-5 sm:p-6 lg:p-7 h-full"
-                style={{
-                  borderTop: '3px solid var(--gold)',
-                  boxShadow: '0 2px 12px rgba(43, 57, 95, 0.07)',
-                  transition: 'box-shadow 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow =
-                    '0 8px 28px rgba(43, 57, 95, 0.14)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow =
-                    '0 2px 12px rgba(43, 57, 95, 0.07)';
-                }}
+              <div
+                className="group bg-white p-6 sm:p-8 lg:p-10 h-full border border-black/5 ring-1 ring-inset ring-black/5 shadow-card hover:shadow-card-hover rounded-sm overflow-hidden transition-all duration-500 ease-out hover:-translate-y-1 relative"
               >
+                {/* Border Accent */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out" />
+                
                 {/* Icon */}
                 <div
-                  className="w-10 h-10 flex items-center justify-center mb-5 transition-colors duration-300"
-                  style={{ background: 'rgba(207, 165, 74, 0.12)' }}
+                  className="w-12 h-12 flex items-center justify-center mb-6 bg-gold/10 rounded-sm text-gold group-hover:bg-gold group-hover:text-primary-blue transition-colors duration-500 ease-out"
                 >
                   <benefit.icon
-                    className="w-5 h-5"
-                    style={{ color: 'var(--gold)' }}
-                    strokeWidth={1.75}
+                    className="w-6 h-6"
+                    strokeWidth={1.5}
                   />
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-bold text-primary-blue text-lg mb-2.5 leading-snug">
+                <h3 className="font-display font-bold text-primary-blue text-xl mb-3 tracking-tighter group-hover:text-gold transition-colors duration-500 ease-out">
                   {benefit.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted-blue text-sm leading-relaxed">
+                <p className="text-muted-blue text-sm leading-relaxed font-medium">
                   {benefit.description}
                 </p>
-              </motion.div>
+              </div>
             </ScrollReveal>
           ))}
         </div>

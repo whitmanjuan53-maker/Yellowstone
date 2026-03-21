@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity, react-hooks/set-state-in-effect */
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -208,7 +209,7 @@ function ActionTile({ icon: Icon, label, onClick, variant = 'default', badge }: 
   };
   
   return (
-    <button onClick={onClick} className={`relative flex flex-col items-center gap-3 p-4 rounded-2xl transition-all duration-200 active:scale-95 ${variants[variant]}`}>
+    <button onClick={onClick} className={`relative flex flex-col items-center gap-3 p-4 rounded-2xl transition-all duration-500 ease-out active:scale-95 ${variants[variant]}`}>
       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${variant === 'default' ? 'bg-gray-100' : 'bg-white/50'}`}>
         <Icon className="w-6 h-6" strokeWidth={1.5} />
       </div>

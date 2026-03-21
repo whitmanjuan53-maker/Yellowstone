@@ -60,32 +60,38 @@ export function Amenities() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
   return (
-    <section ref={sectionRef} className="section-padding py-20 bg-white dark:bg-[#0d1d30]">
+    <section ref={sectionRef} className="section-padding section-breathe bg-slate-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-16 flex flex-col items-center"
+          initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-white mb-4">
+          <div className="text-gold text-xs font-bold tracking-widest uppercase mb-6 flex items-center justify-center gap-4 w-full max-w-xs">
+            <div className="h-px bg-gold/30 flex-1"></div>
+            <span>Property Features</span>
+            <div className="h-px bg-gold/30 flex-1"></div>
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary-blue mb-6 tracking-tighter leading-tight">
             World-Class Amenities
           </h2>
-          <p className="text-slate/70 dark:text-white/60 max-w-2xl mx-auto">
+          <p className="text-muted-blue text-lg max-w-2xl mx-auto leading-relaxed">
             Experience luxury living with our comprehensive suite of amenities designed 
             for your comfort, convenience, and lifestyle.
           </p>
         </motion.div>
 
-        {/* Amenities Grid */}
+        {/* Amenities Grid - Bento Style */}
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
@@ -94,16 +100,15 @@ export function Amenities() {
             <motion.div
               key={amenity.title}
               variants={itemVariants}
-              className="group p-6 rounded-2xl bg-neutral-50 dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-primary transition-all duration-300 text-center cursor-pointer"
-              whileHover={{ y: -4 }}
+              className="group p-8 rounded-sm bg-white border border-black/5 shadow-card hover:shadow-card-hover ring-1 ring-inset ring-black/5 transition-all duration-500 ease-out flex flex-col items-start cursor-pointer hover:-translate-y-1"
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#E1B84A]/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                <amenity.icon className="w-7 h-7 text-[#E1B84A] group-hover:text-white dark:group-hover:text-primary" />
+              <div className="w-12 h-12 mb-6 rounded-sm bg-slate-50 group-hover:bg-primary-blue transition-colors duration-500 ease-out flex items-center justify-center border border-black/5">
+                <amenity.icon className="w-5 h-5 text-gold group-hover:text-white transition-colors duration-500 ease-out" strokeWidth={1.5} />
               </div>
-              <h3 className="font-semibold text-primary dark:text-white group-hover:text-white dark:group-hover:text-primary mb-2 transition-colors">
+              <h3 className="font-bold text-primary-blue text-sm mb-2 tracking-tight group-hover:text-gold transition-colors duration-500 ease-out">
                 {amenity.title}
               </h3>
-              <p className="text-sm text-slate/60 dark:text-white/60 group-hover:text-white/80 dark:group-hover:text-primary/80 transition-colors">
+              <p className="text-sm text-muted-blue leading-relaxed">
                 {amenity.description}
               </p>
             </motion.div>

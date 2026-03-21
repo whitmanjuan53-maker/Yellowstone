@@ -36,29 +36,27 @@ export function QuickAccessBar() {
                   initial={{ opacity: 0, x: 10, width: 0 }}
                   animate={{ opacity: 1, x: 0, width: 'auto' }}
                   exit={{ opacity: 0, x: 10, width: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="overflow-hidden mr-3"
                 >
-                  <div className="bg-primary-blue text-white text-xs px-3 py-2 rounded-sm whitespace-nowrap border border-gold/30">
-                    <span className="font-semibold text-gold">{action.label}</span>
-                    <span className="text-white/70 ml-1">{action.description}</span>
+                  <div className="bg-primary-blue text-white text-xs px-4 py-3 rounded-sm whitespace-nowrap border border-black/5 shadow-card tracking-widest uppercase">
+                    <span className="font-bold text-gold">{action.label}</span>
+                    <span className="text-white/70 ml-2 font-medium">{action.description}</span>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
             {/* Icon Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`w-11 h-11 rounded-sm flex items-center justify-center transition-all duration-300 ${
+            <div
+              className={`w-12 h-12 rounded-sm flex items-center justify-center transition-all duration-500 ease-out shadow-card hover:-translate-x-1 ${
                 hoveredIndex === index
-                  ? 'bg-gold text-primary-blue'
-                  : 'bg-primary-blue text-gold border border-gold/30'
+                  ? 'bg-gold text-primary-blue ring-1 ring-inset ring-black/5'
+                  : 'bg-primary-blue text-gold border border-gold/30 ring-1 ring-inset ring-white/5'
               }`}
             >
               <action.icon className="w-4 h-4" strokeWidth={1.5} />
-            </motion.div>
+            </div>
           </div>
         </Link>
       ))}

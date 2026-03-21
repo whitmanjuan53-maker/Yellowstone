@@ -189,7 +189,7 @@ export function PropertyDetailPage() {
           <Button
             onClick={() => setIsBookingOpen(true)}
             size="lg"
-            className="bg-gold text-primary-blue hover:bg-gold-dark font-semibold px-8 h-14 shadow-gold hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="bg-gold text-primary-blue hover:bg-gold-dark font-semibold px-8 h-14 shadow-gold hover:shadow-lg transition-all duration-500 ease-out hover:-translate-y-0.5"
           >
             <FileText className="w-5 h-5 mr-2" />
             Apply Now
@@ -249,7 +249,7 @@ export function PropertyDetailPage() {
                     {property.floorPlans.map((floorPlan, index) => (
                       <motion.div
                         key={floorPlan.id}
-                        className="bg-white border border-gray-200 overflow-hidden hover:shadow-card-hover transition-all duration-300"
+                        className="bg-white border border-gray-200 overflow-hidden hover:shadow-card-hover transition-all duration-500 ease-out"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
@@ -360,7 +360,7 @@ export function PropertyDetailPage() {
                   <button
                     key={category}
                     onClick={() => setSelectedGalleryCategory(category)}
-                    className={`px-4 py-2 text-sm font-medium capitalize transition-all duration-300 ${
+                    className={`px-4 py-2 text-sm font-medium capitalize transition-all duration-500 ease-out ${
                       selectedGalleryCategory === category
                         ? 'bg-gold text-primary-blue'
                         : 'bg-white text-muted-blue hover:bg-off-white border border-gray-200'

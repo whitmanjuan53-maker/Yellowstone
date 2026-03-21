@@ -6,6 +6,46 @@ interface EntrancePortalProps {
   onEnter: () => void;
 }
 
+// Pre-generated stable values for streak animation to avoid impure functions during render
+const STREAK_COUNT = 20;
+const streakData = Array.from({ length: STREAK_COUNT }, (_, i) => ({
+  id: i,
+  left: `${(i * 5) % 100}%`,
+  delay: (i % 10) * 0.05,
+}));
+
+function StreakAnimation() {
+  return (
+    <motion.div
+      className="absolute inset-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: [0, 0.8, 0] }}
+      transition={{ duration: 2, times: [0, 0.3, 1] }}
+    >
+      {streakData.map((streak) => (
+        <motion.div
+          key={streak.id}
+          className="absolute bg-gradient-to-b from-transparent via-[#CFA54A]/60 to-transparent"
+          style={{
+            left: streak.left,
+            width: '2px',
+            height: '100%',
+          }}
+          animate={{
+            scaleY: [0, 1, 0],
+            y: ['-100%', '100%']
+          }}
+          transition={{
+            duration: 0.8,
+            delay: streak.delay,
+            repeat: 2
+          }}
+        />
+      ))}
+    </motion.div>
+  );
+}
+
 export function EntrancePortal({ onEnter }: EntrancePortalProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
@@ -230,33 +270,7 @@ export function EntrancePortal({ onEnter }: EntrancePortalProps) {
             />
           </motion.div>
 
-          <motion.div
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.8, 0] }}
-            transition={{ duration: 2, times: [0, 0.3, 1] }}
-          >
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute bg-gradient-to-b from-transparent via-[#CFA54A]/60 to-transparent"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  width: '2px',
-                  height: '100%',
-                }}
-                animate={{
-                  scaleY: [0, 1, 0],
-                  y: ['-100%', '100%']
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: Math.random() * 0.5,
-                  repeat: 2
-                }}
-              />
-            ))}
-          </motion.div>
+          <StreakAnimation />
         </motion.div>
       )}
     </AnimatePresence>

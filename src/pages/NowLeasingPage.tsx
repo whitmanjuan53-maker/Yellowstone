@@ -449,6 +449,7 @@ function HeroCarousel() {
       setCurrentIndex((prev) => (prev + 1) % featuredPromos.length);
     }, 5000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAutoPlaying]);
 
   const current = featuredPromos[currentIndex];

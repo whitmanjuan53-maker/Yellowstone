@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
@@ -29,14 +29,16 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [hasEntered, setHasEntered] = useState(() => {
     return sessionStorage.getItem('yellowstone-entered') === 'true';
   });
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  // Use useSyncExternalStore for hydration-safe client detection
+  const isLoaded = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const handleEnter = () => {
     sessionStorage.setItem('yellowstone-entered', 'true');
@@ -50,7 +52,7 @@ function App() {
         {/* Entrance Portal - shown only on first visit */}
         {!hasEntered && <EntrancePortal onEnter={handleEnter} />}
         
-        <div className={`min-h-screen bg-off-white transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`min-h-screen bg-off-white transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`} suppressHydrationWarning>
           <Navigation />
           <main>
             <Routes>

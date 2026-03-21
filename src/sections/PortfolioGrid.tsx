@@ -1,14 +1,14 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MapPin, ArrowRight, Bed, Bath, Square } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { properties } from '@/data/properties';
+import { PropertyCard } from '@/components/PropertyCard';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 export function PortfolioGrid() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Take first 6 properties for the grid
   const featuredProperties = properties.slice(0, 6);
@@ -62,81 +62,13 @@ export function PortfolioGrid() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            {featuredProperties.map((property, index) => (
+            {featuredProperties.map((property) => (
               <motion.div
                 key={property.id}
                 variants={itemVariants}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                className="h-full"
               >
-                <Link to={`/properties/${property.slug}`}>
-                  <div 
-                    className={`
-                      group bg-white overflow-hidden transition-all duration-500
-                      ${hoveredIndex === index ? 'shadow-gold-glow -translate-y-2' : 'shadow-card'}
-                    `}
-                    style={{
-                      border: hoveredIndex === index ? '1px solid #CFA54A' : '1px solid transparent'
-                    }}
-                  >
-                    {/* Property Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <motion.img
-                        src={property.heroImage}
-                        alt={property.name}
-                        className="w-full h-full object-cover"
-                        animate={{ scale: hoveredIndex === index ? 1.05 : 1 }}
-                        transition={{ duration: 0.6 }}
-                      />
-                      {/* Dark overlay on hover */}
-                      <div 
-                        className={`
-                          absolute inset-0 bg-primary-blue/20 transition-opacity duration-300
-                          ${hoveredIndex === index ? 'opacity-100' : 'opacity-0'}
-                        `}
-                      />
-                      {/* Starting Price Badge */}
-                      <div className="absolute top-4 right-4 bg-gold text-primary-blue px-4 py-2 font-semibold text-sm">
-                        From ${property.priceRange.min.toLocaleString()}/mo
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-display font-bold text-primary-blue mb-2 group-hover:text-gold-dark transition-colors">
-                        {property.name}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-blue mb-4">
-                        <MapPin className="w-4 h-4 text-gold" />
-                        <span className="text-sm">{property.city}, {property.state}</span>
-                      </div>
-
-                      {/* Quick Stats */}
-                      <div className="flex items-center gap-4 mb-6 text-sm text-muted-blue">
-                        <div className="flex items-center gap-1">
-                          <Bed className="w-4 h-4 text-gold" />
-                          <span>Up to {property.bedrooms} BR</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Bath className="w-4 h-4 text-gold" />
-                          <span>Up to {property.bathrooms} BA</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Square className="w-4 h-4 text-gold" />
-                          <span>{property.sqft.toLocaleString()}+ sqft</span>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <Button 
-                        className="w-full bg-gold text-primary-blue hover:bg-gold-dark font-semibold transition-all duration-300 group/btn"
-                      >
-                        View Property
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
+                <PropertyCard property={property} featured={true} />
               </motion.div>
             ))}
           </motion.div>
@@ -151,10 +83,10 @@ export function PortfolioGrid() {
             <Link to="/properties">
               <Button 
                 size="lg"
-                className="bg-primary-blue text-white hover:bg-secondary-blue px-8 h-14 font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5"
+                className="bg-primary-blue text-white hover:bg-secondary-blue px-8 h-14 font-bold tracking-widest uppercase text-xs transition-all duration-500 ease-out hover:-translate-y-0.5 group"
               >
                 View All Properties
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-500 ease-out group-hover:translate-x-2" />
               </Button>
             </Link>
           </motion.div>

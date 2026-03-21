@@ -118,7 +118,7 @@ export function PropertySpotlight() {
                   <Link to="/contact">
                     <Button 
                       variant="outline" 
-                      className="h-12 px-8 border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-all duration-300"
+                      className="h-12 px-8 border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-all duration-500 ease-out"
                     >
                       Schedule Tour
                     </Button>

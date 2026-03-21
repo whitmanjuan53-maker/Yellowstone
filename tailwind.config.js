@@ -60,10 +60,10 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        'card': '0 4px 20px rgba(43, 57, 95, 0.08)',
-        'card-hover': '0 8px 30px rgba(43, 57, 95, 0.15)',
-        'gold': '0 4px 15px rgba(207, 165, 74, 0.4)',
-        'gold-glow': '0 4px 20px rgba(207, 165, 74, 0.3)',
+        'card': '0 32px 64px -12px rgba(0, 0, 0, 0.08)',
+        'card-hover': '0 40px 80px -16px rgba(0, 0, 0, 0.12)',
+        'gold': '0 8px 30px rgba(207, 165, 74, 0.2)',
+        'gold-glow': '0 10px 40px rgba(207, 165, 74, 0.3)',
       },
       keyframes: {
         "accordion-down": {

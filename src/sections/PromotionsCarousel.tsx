@@ -198,27 +198,26 @@ export function PromotionsCarousel() {
   return (
     <section 
       ref={sectionRef}
-      className="pt-4 pb-6 sm:pt-6 sm:pb-8 bg-white"
+      className="section-padding section-breathe bg-slate-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-4 sm:mb-6"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16 flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-8 h-px bg-gold" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Limited Time Offers
-            </span>
-            <span className="w-8 h-px bg-gold" />
+          <div className="text-gold text-xs font-bold tracking-widest uppercase mb-6 flex items-center justify-center gap-4 w-full">
+            <div className="h-px bg-gold/30 flex-1 max-w-[100px]"></div>
+            <Sparkles className="w-4 h-4" strokeWidth={1.5} />
+            <span>Limited Time Offers</span>
+            <div className="h-px bg-gold/30 flex-1 max-w-[100px]"></div>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-blue mb-2">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-primary-blue mb-4 tracking-tighter leading-tight">
             Now Leasing Specials
           </h2>
-          <p className="text-muted-blue text-sm max-w-md mx-auto">
+          <p className="text-muted-blue text-lg max-w-2xl mx-auto leading-relaxed">
             Exclusive deals on our premium properties. Don&apos;t miss out!
           </p>
         </motion.div>
@@ -227,45 +226,45 @@ export function PromotionsCarousel() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative max-w-4xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           {/* Main Card */}
-          <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+          <div className="relative bg-white rounded-sm border border-black/5 ring-1 ring-inset ring-black/5 shadow-card hover:shadow-card-hover overflow-hidden transition-all duration-500 ease-out">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPromo.id}
-                initial={{ opacity: 0, x: 100 }}
+                initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.4, ease: [0.43, 0.13, 0.23, 0.96] }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="grid md:grid-cols-2"
               >
                 {/* Image Side */}
-                <div className="relative h-56 md:h-auto min-h-[280px]">
+                <div className="relative h-64 md:h-auto min-h-[320px]">
                   <img 
                     src={currentPromo.propertyImage} 
                     alt={currentPromo.propertyName}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-blue/90 via-primary-blue/20 to-transparent" />
                   
                   {/* Property Name Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-white font-display font-bold text-xl mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <h3 className="text-white font-display font-bold text-2xl tracking-tight mb-2">
                       {currentPromo.propertyName}
                     </h3>
-                    <div className="flex items-center gap-1 text-white/80 text-sm">
-                      <MapPin className="w-3.5 h-3.5" />
+                    <div className="flex items-center gap-2 text-white/80 text-sm font-medium tracking-wide">
+                      <MapPin className="w-4 h-4" strokeWidth={1.5} />
                       {currentPromo.propertyCity}, {currentPromo.propertyState}
                     </div>
                   </div>
 
                   {/* Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r ${currentPromo.color} text-white shadow-lg`}>
+                  <div className="absolute top-6 left-6">
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm text-xs font-bold uppercase tracking-widest bg-gradient-to-r ${currentPromo.color} text-white shadow-md`}>
                       <Sparkles className="w-3 h-3" />
                       Special Offer
                     </span>
@@ -273,26 +272,26 @@ export function PromotionsCarousel() {
                 </div>
 
                 {/* Content Side */}
-                <div className="p-6 md:p-8 flex flex-col justify-center">
+                <div className="p-8 md:p-12 flex flex-col justify-center">
                   {/* Discount Badge */}
-                  <div className="mb-4">
-                    <span className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-lg font-bold bg-gradient-to-r ${currentPromo.color} text-white`}>
-                      <Percent className="w-4 h-4" />
+                  <div className="mb-6">
+                    <span className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-sm text-lg font-bold tracking-tight bg-gradient-to-r ${currentPromo.color} text-white shadow-sm`}>
+                      <Percent className="w-4 h-4" strokeWidth={2.5} />
                       {currentPromo.discount}
                     </span>
                   </div>
 
                   {/* Promotion Title */}
-                  <h4 className="text-xl font-display font-bold text-primary-blue mb-1">
+                  <h4 className="text-2xl font-display font-bold text-primary-blue mb-2 tracking-tight">
                     {currentPromo.title}
                   </h4>
-                  <p className="text-gold font-semibold mb-3">
+                  <p className="text-gold font-bold tracking-widest text-xs uppercase mb-6">
                     {currentPromo.subtitle}
                   </p>
 
                   {/* Valid Until */}
-                  <div className="flex items-center gap-2 text-sm text-muted-blue mb-4">
-                    <Clock className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-muted-blue mb-6">
+                    <Clock className="w-4 h-4" strokeWidth={1.5} />
                     <span>
                       Valid until: {currentPromo.validUntil === 'Ongoing' ? 'Ongoing' : new Date(currentPromo.validUntil).toLocaleDateString()}
                     </span>
@@ -300,11 +299,11 @@ export function PromotionsCarousel() {
 
                   {/* Promo Code */}
                   {currentPromo.code && (
-                    <div className="mb-4">
-                      <span className="text-xs text-muted-blue uppercase tracking-wide">Promo Code:</span>
-                      <div className="inline-flex items-center gap-2 ml-2 px-3 py-1.5 bg-gray-100 rounded-lg">
-                        <Tag className="w-3.5 h-3.5 text-gold" />
-                        <span className="font-mono font-semibold text-primary-blue text-sm">
+                    <div className="mb-8">
+                      <span className="text-xs text-muted-blue/70 uppercase font-bold tracking-widest block mb-2">Promo Code:</span>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-black/5 rounded-sm ring-1 ring-inset ring-black/5">
+                        <Tag className="w-4 h-4 text-gold" strokeWidth={1.5} />
+                        <span className="font-mono font-bold text-primary-blue text-sm tracking-widest">
                           {currentPromo.code}
                         </span>
                       </div>
@@ -314,10 +313,10 @@ export function PromotionsCarousel() {
                   {/* CTA */}
                   <Link 
                     to={`/properties/${currentPromo.propertySlug}`}
-                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-gold text-primary-blue font-semibold rounded-lg hover:bg-gold-light transition-colors"
+                    className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-primary-blue text-white text-xs font-bold tracking-widest uppercase rounded-sm hover:-translate-y-1 hover:bg-gold transition-all duration-500 ease-out shadow-md group mt-auto"
                   >
                     View Property
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-500 ease-out group-hover:translate-x-1" strokeWidth={1.5} />
                   </Link>
                 </div>
               </motion.div>
@@ -326,20 +325,20 @@ export function PromotionsCarousel() {
             {/* Navigation Arrows */}
             <button
               onClick={handlePrev}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-sm flex items-center justify-center shadow-card border border-black/5 hover:bg-gold hover:text-white transition-all duration-500 ease-out z-10 text-primary-blue hover:-translate-x-1"
             >
-              <ChevronLeft className="w-5 h-5 text-primary-blue" />
+              <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-sm flex items-center justify-center shadow-card border border-black/5 hover:bg-gold hover:text-white transition-all duration-500 ease-out z-10 text-primary-blue hover:translate-x-1"
             >
-              <ChevronRight className="w-5 h-5 text-primary-blue" />
+              <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
             </button>
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-8">
             {allPromotions.map((_, idx) => (
               <button
                 key={idx}
@@ -347,17 +346,17 @@ export function PromotionsCarousel() {
                   setIsAutoPlaying(false);
                   setCurrentIndex(idx);
                 }}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
                   idx === currentIndex 
-                    ? 'w-6 bg-gold' 
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
+                    ? 'w-8 bg-gold' 
+                    : 'w-2 bg-gray-200 hover:bg-gray-300'
                 }`}
               />
             ))}
           </div>
 
           {/* Property Thumbnails (Desktop) */}
-          <div className="hidden lg:flex justify-center gap-3 mt-6">
+          <div className="hidden lg:flex justify-center gap-4 mt-8">
             {allPromotions.slice(0, 6).map((promo, idx) => (
               <button
                 key={promo.id}
@@ -365,10 +364,10 @@ export function PromotionsCarousel() {
                   setIsAutoPlaying(false);
                   setCurrentIndex(idx);
                 }}
-                className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`relative w-20 h-20 rounded-sm overflow-hidden border transition-all duration-500 ease-out shadow-sm hover:-translate-y-1 ${
                   idx === currentIndex 
-                    ? 'border-gold ring-2 ring-gold/20' 
-                    : 'border-transparent opacity-60 hover:opacity-100'
+                    ? 'border-gold ring-1 ring-gold shadow-gold-glow' 
+                    : 'border-black/5 opacity-60 hover:opacity-100 hover:border-black/10'
                 }`}
               >
                 <img 

@@ -47,8 +47,8 @@ export function FeaturedProperties() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96]
+        duration: 0.8,
+        ease: "easeOut"
       }
     }
   };
@@ -57,56 +57,43 @@ export function FeaturedProperties() {
     <section
       id="featured"
       ref={sectionRef}
-      className="section-padding py-20 bg-neutral-100 dark:bg-[#0a1628]"
+      className="section-padding section-breathe bg-white"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
-          initial={{ opacity: 0, y: 30 }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
+          initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div>
-            <motion.div 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#E1B84A]/10 rounded-full text-[#E1B84A] text-sm font-medium mb-4"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+          <div className="flex-1">
+            <div className="text-gold text-xs font-bold tracking-widest uppercase mb-4 flex items-center gap-4">
               <Sparkles className="w-4 h-4" />
               <span>Featured Properties</span>
-            </motion.div>
-            <motion.h2 
-              className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-white mb-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+              <div className="h-px bg-gold/30 flex-1 max-w-xs"></div>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary-blue mb-4 tracking-tighter leading-tight">
               Handpicked for You
-            </motion.h2>
-            <motion.p 
-              className="text-slate/70 dark:text-white/60 max-w-xl"
-              initial={{ opacity: 0, y: 15 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            </h2>
+            <p className="text-muted-blue text-lg leading-relaxed max-w-xl">
               Discover our most exclusive properties, carefully selected for their 
               exceptional locations, amenities, and living experiences.
-            </motion.p>
+            </p>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
             <Link to="/properties">
               <Button
                 variant="outline"
-                className="group border-primary/20 dark:border-white/20 text-primary dark:text-white hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-primary transition-all duration-300"
+                className="bg-transparent border border-black/10 text-primary-blue hover:bg-primary-blue hover:text-white px-8 h-12 font-bold tracking-widest uppercase text-xs transition-all duration-500 ease-out hover:-translate-y-1 group"
               >
                 View All Properties
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 ml-3 transition-transform duration-500 ease-out group-hover:translate-x-2" />
               </Button>
             </Link>
           </motion.div>
@@ -131,21 +118,21 @@ export function FeaturedProperties() {
 
         {/* Bottom CTA */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          <p className="text-slate/60 dark:text-white/50 mb-4">
+          <p className="text-muted-blue mb-6">
             Can&apos;t find what you&apos;re looking for?
           </p>
           <Link to="/map">
             <Button
               size="lg"
-              className="bg-secondary text-white hover:bg-secondary-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              className="bg-primary-blue text-white hover:bg-secondary-blue px-8 h-14 font-bold tracking-widest uppercase text-xs transition-all duration-500 ease-out hover:-translate-y-1 shadow-card group"
             >
               Explore on Map
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-4 h-4 ml-3 transition-transform duration-500 ease-out group-hover:translate-x-2" />
             </Button>
           </Link>
         </motion.div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,6 +19,11 @@ const quickReplies = [
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
+  const messageIdRef = useRef(0);
+  const getNextId = () => {
+    messageIdRef.current += 1;
+    return `msg-${messageIdRef.current}`;
+  };
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -34,7 +39,7 @@ export function ChatBot() {
     if (!text.trim()) return;
 
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: getNextId(),
       text: text.trim(),
       isUser: true,
       timestamp: new Date(),
@@ -48,7 +53,7 @@ export function ChatBot() {
     setTimeout(() => {
       const response = getResponse(text.trim());
       const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: getNextId(),
         text: response,
         isUser: false,
         timestamp: new Date(),
